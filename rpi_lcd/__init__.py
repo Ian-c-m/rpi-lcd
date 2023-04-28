@@ -46,7 +46,7 @@ class LCD(object):
         self._write_byte(mode | (byte & 0xF0) | backlight_mode)
         self._write_byte(mode | ((byte << 4) & 0xF0) | backlight_mode)
 
-    def text(self, text, line, align='left'):
+    def text(self, text, line=1, align='left'):
         self.write(LINES.get(line, LINES[1]))
         text, other_lines = self.get_text_line(text)
         text = getattr(text, ALIGN_FUNC.get(align, 'ljust'))(self.width)
